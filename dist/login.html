@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <title>LOGIN</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+      body {
+        background-image: url("assets/images/banner.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .modal, .alert-popup {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      }
+
+      .modal-content, .alert-content {
+        background: rgba(200, 200, 200, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 400px;
+      }
+
+      .ture-btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+      }
+      .false-btn {
+        background-color:#4b5563;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      #qrcode {
+        margin: 10px auto;
+        width: 100%;
+        max-width: 200px;
+      }
+
+      @media (max-width: 480px) {
+        .modal-content, .alert-content {
+          width: 90%;
+        }
+        #qrcode {
+          max-width: 150px;
+        }
+      }
+
+      /* ซ่อน alert popup เริ่มต้น */
+      .alert-popup {
+        display: none;
+      }
+    </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><script defer src="main.js"></script></head>
+  <body>
+    <!-- Popup QR Code -->
+    <div id="qrModal" class="modal">
+      <div class="modal-content">
+        <p>กรุณาสแกน QR Code</p>
+        <div id="qrcode"></div>
+        <p id="status">รอการสแกน...</p>
+        <button onclick="closeQRCode()" class="ture-btn">
+          ปิดหน้าต่างแสดง QR Code (มีข้อมูล)
+        </button>
+        <button onclick="showAlert()" class="false-btn">
+          ปิดหน้าต่างแสดง QR Code (ไม่มีข้อมูล)
+        </button>
+      </div>
+    </div>
+
+    <!-- Alert Popup -->
+    <div id="alertPopup" class="alert-popup">
+      <div class="alert-content">
+        <p>คุณยังไม่มีข้อมูลอยู่ในระบบ</p>
+        <button onclick="closeAlert()" class="ture-btn">เข้าใจแล้ว</button>
+      </div>
+    </div>
+
+    <script>
+      const userId = "1234567890123";
+      const checkStatusURL = `http://localhost:3000/api/check-login-status?user=${userId}`;
+      // const redirectURL = "main_status.html";
+
+      window.onload = function () {
+        new QRCode(document.getElementById("qrcode"), {
+          text: checkStatusURL,
+          width: 200,
+          height: 200,
+        });
+        checkLoginStatus();
+      };
+
+      function checkLoginStatus() {
+        fetch(checkStatusURL)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status === "step5") {
+              document.getElementById("status").innerText =
+                "ล็อกอินสำเร็จ! กำลังเข้าสู่ระบบ...";
+              window.location.href = redirectURL;
+            } else {
+              console.log("ไม่พบสถานะที่ถูกต้อง");
+            }
+          })
+          .catch((error) => console.error("Error checking login status:", error));
+      }
+
+      function closeQRCode() {
+        document.getElementById("qrModal").style.display = "none";
+        window.location.href = "login_fail.html";
+      }
+
+      function showAlert() {
+        document.getElementById("qrModal").style.display = "none";
+        document.getElementById("alertPopup").style.display = "flex";
+      }
+
+      function closeAlert() {
+        document.getElementById("alertPopup").style.display = "none";
+        window.location.href = "login.html";
+      }
+    </script>
+  </body>
+</html>

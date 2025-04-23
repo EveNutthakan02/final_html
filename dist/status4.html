@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>STATUS 4</title>
+  <meta charset="utf-8"><script defer src="main.js"></script></head>
+  <body>
+    <div>
+      <iframe src="banner.html"></iframe>
+    </div>
+    <div class="form-container sent-to-back">
+      <h1 class="text-3xl font-bold text-center" id="text-title">
+        สถานะการยื่นขอรับสิทธิเหรียญชัยสมรภูมิ
+      </h1>
+
+      <!-- Timeline -->
+      <div class="timeline">
+        <div class="step">
+          <div class="circle">1</div>
+          <div class="status-text"><p>รอเอกสาร</p></div>
+        </div>
+        <div class="step">
+          <div class="circle">2</div>
+          <div class="status-text"><p>ตรวจสอบ</p></div>
+        </div>
+        <div class="step">
+          <div class="circle">3</div>
+          <div class="status-text"><p>ส่งไปกรมแผนที่</p></div>
+        </div>
+        <div class="step">
+          <div class="circle">4</div>
+          <div class="status-text"><p>แจกจ่ายบัตร</p></div>
+        </div>
+        <div class="step">
+          <div class="circle">5</div>
+          <div class="status-text"><p>รับบัตร</p></div>
+        </div>
+      </div>
+      <!-- ข้อมูลผู้รับสิทธิ -->
+      <form>
+        <h5 class="text-lg font-bold">ผู้รับสิทธิ</h5>
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="mt-2">
+            <label
+              for="status-idRights"
+              class="block text-sm font-medium text-gray-900"
+              >เลขประจำตัวประชาชน</label
+            >
+            <output
+              id="status-idRights"
+              name="status-idRights"
+              class="block w-48 p-2 bg-gray-100 rounded-md border border-gray-300"
+              >1234567890123</output
+            >
+          </div>
+          <div class="mt-2">
+            <label
+              for="status-nameRights"
+              class="block text-sm font-medium text-gray-900"
+              >ชื่อ-สกุล</label
+            >
+
+            <output
+              id="status_nameRights"
+              name="status-nameRights"
+              class="block w-48 p-2 bg-gray-100 rounded-md border border-gray-300"
+              >ร.ต. อนุชา หาญกล้า</output
+            >
+          </div>
+        </div>
+        <!-- ข้อมูลผู้ขอรับสิทธิ -->
+        <h5 class="text-lg font-bold">ผู้ขอรับสิทธิ</h5>
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="mt-2">
+            <label
+              for="status-giveRightsID"
+              class="block text-sm font-medium text-gray-900"
+              >เลขประจำตัวประชาชน</label
+            >
+            <output
+              id="status-giveRightsID"
+              name="status-giveRightsID"
+              class="block w-48 p-2 bg-gray-100 rounded-md border border-gray-300"
+              >1234567890111</output
+            >
+          </div>
+
+          <div class="mt-2">
+            <label
+              for="status-giveRightsNAME"
+              class="block text-sm font-medium text-gray-900"
+              >ชื่อ-สกุล</label
+            >
+            <output
+              id="status-giveRightsNAME"
+              name="status-giveRightsNAME"
+              class="block w-48 p-2 bg-gray-100 rounded-md border border-gray-300"
+              >นาย เอกพล หาญกล้า</output
+            >
+          </div>
+        </div>
+
+        <!-- สงคราม -->
+        <h5 class="text-lg font-bold">สงคราม</h5>
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="mt-2">
+            <label
+              for="status-warEvent"
+              class="block text-sm font-medium text-gray-900"
+              >เหตุการณ์สงคราม</label
+            >
+            <output
+              id="status-warEvent"
+              name="status-warEvent"
+              class="block w-48 p-2 bg-gray-100 rounded-md border border-gray-300"
+              onchange="updateDropdownStyle(this)"
+              >สงครามเวียดนาม</output
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+    <script>
+      // ข้อมูลตัวอย่าง (Mockup Data)
+      const mockData = {
+        activeStep: 4, // สถานะปัจจุบัน (เปลี่ยนค่าตามต้องการ)
+      };
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          updateTimeline(mockData.activeStep);
+          addRegisterButton(); // ✅ เรียกใช้ฟังก์ชันเพิ่มปุ่มหลังจากอัปเดต Timeline
+        }, 200); // รอ 0.2 วินาทีก่อนโหลดข้อมูล
+
+        // ฟังก์ชันดึงค่าพารามิเตอร์จาก URL
+        // function getQueryParam(param) {
+        //   const urlParams = new URLSearchParams(window.location.search);
+        //   return urlParams.get(param);
+        // }
+
+        // ดึง id จาก URL หรือ sessionStorage
+        //let idCard = getQueryParam("id") || sessionStorage.getItem("idCard");
+
+        // ค้นหาข้อมูลจาก Mock Data ตาม idCard
+        //const userData = mockDatabase.find((user) => user.idCard === idCard);
+
+        // // ดึงข้อมูลจาก sessionStorage
+        // if (userData) {
+        //   // อัปเดตข้อมูลใน Output
+        //   document.getElementById("status-idRights").textContent =
+        //     userData.idCard || "ไม่มีข้อมูล";
+        //   document.getElementById("status-nameRights").textContent =
+        //     `${userData.titleName} ${userData.firstName} ${userData.lastName}`.trim() ||
+        //     "ไม่มีข้อมูล";
+
+        //   document.getElementById("status-giveRightsID").textContent =
+        //     userData.idHeir || userData.idCard;
+        //   document.getElementById("status-giveRightsNAME").textContent =
+        //     userData.idHeir
+        //       ? `${userData.titleHeir} ${userData.firstHeir} ${userData.lastHeir}`.trim()
+        //       : `${userData.titleName} ${userData.firstName} ${userData.lastName}`.trim();
+
+        //   document.getElementById("status-warEvent").textContent =
+        //     changeWar(userData.warEvent) || "ไม่มีข้อมูล";
+        // } else {
+        //   console.warn("ไม่พบข้อมูลผู้ใช้ในระบบ");
+        // }
+        // ฟังก์ชันแปลง warEvent ID เป็นชื่อเหตุการณ์
+        // function changeWar(eventId) {
+        //   const warEventMapping = {
+        //     ww1: "สงครามโลกครั้งที่ 1",
+        //     "indochina-war": "สงครามอินโดจีน",
+        //     ww2: "สงครามโลกครั้งที่ 2",
+        //     "korean-war": "สงครามเกาหลี",
+        //     "vietnam-war": "สงครามเวียดนาม",
+        //   };
+        //   return warEventMapping[eventId] || "ไม่พบข้อมูล";
+        // }
+      });
+
+      function updateTimeline(activeStep) {
+        document.querySelectorAll(".circle").forEach((circle, index) => {
+          circle.style.backgroundColor =
+            index < activeStep ? "#4a90e2" : "#ddd";
+          circle.style.color = index < activeStep ? "#fff" : "#000";
+        });
+
+        document.querySelectorAll(".status-text p").forEach((p, index) => {
+            p.style.display = index === activeStep - 1 ? "block" : "none";//ซ่อนข้อความสถานะ
+        });
+
+        document
+          .querySelector(".timeline")
+          .style.setProperty("--progress", `${((activeStep - 1) / 4) * 100}%`);
+      }
+    </script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: auto;
+        padding: 0; /* กำจัด padding ของ body //padding: 20px;*/
+      }
+      iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+        position: relative;
+        z-index: 1; /* ลด z-index ของ iframe ถ้ามันทับปุ่ม */
+      }
+      .form-container {
+        max-width: 800px;
+        margin: 20px auto; /* เพิ่มค่า margin-top ที่นี่ */
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row; /* ค่าเริ่มต้นเป็นแนวนอน */
+        width: 80%;
+        max-width: 800px;
+        margin: 50px auto;
+        position: relative;
+        --progress: 0%;
+      }
+
+      /* เส้นแนวนอน */
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 30%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          #4a90e2 var(--progress),
+          #ddd var(--progress)
+        );
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px; /* เว้นระยะระหว่าง circle กับ text */
+      }
+
+      .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: bold;
+        background: #ddd;
+        color: white;
+      }
+
+      .status-text {
+        height: 30px; /* กำหนดความสูงให้คงที่ */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .status-text p {
+        display: none;
+        color: #4a90e2;
+        font-weight: bold;
+      }
+
+      .sent-to-back {
+        position: relative; /* หรือ absolute / fixed */
+        z-index: 1;
+      }
+
+      /* กำหนดให้แนวตั้งเมื่อหน้าจอเล็กกว่า 768px (แนวตั้ง) */
+      @media (max-width: 768px) and (orientation: portrait) {
+        .form-container {
+          width: 90%;
+          padding: 15px;
+        }
+        .timeline {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: row; /* Horizontal layout */
+          width: 90%;
+          max-width: 800px;
+          margin: 50px auto;
+          position: relative;
+          --progress: 0%;
+        }
+        .timeline::before {
+          content: "";
+          position: absolute;
+          top: 30%;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: linear-gradient(
+            to right,
+            #4a90e2 var(--progress),
+            #ddd var(--progress)
+          );
+          transform: translateY(-50%);
+          z-index: -1;
+        }
+
+        .circle {
+          width: 40px;
+          height: 40px;
+          font-size: 14px;
+        }
+
+        .status-text {
+          order: 1; /* ย้ายให้ไปอยู่หลัง circle */
+          margin-left: 10px; /* ขยับไปทางขวาของ circle */
+          text-align: left;
+        }
+
+        .status-text p {
+          font-size: 14px;
+      }
+
+
+        .text-title {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>result</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8"><script defer src="main.js"></script></head>
+  <body>
+    <div class="iframe-wrapper">
+      <iframe src="banner.html"></iframe>
+    </div>
+    <div class="border-container">
+      <div class="text-center mb-6">
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-800">
+          ลงทะเบียนขอรับสิทธิเสร็จสิ้น
+        </h1>
+      </div>
+
+      <div class="flex justify-center">
+        <div class="w-full md:w-96 relative">
+          <label for="result" class="block text-gray-500 text-sm mb-1">
+            ชื่อผู้ขอรับสิทธิ :
+          </label>
+          <output id="result" class="px-4 py-2 text-gray-900 font-bold"
+            ><span id="result_name"></span>
+            นาย เอกพล หาญกล้า
+          </output>
+        </div>
+      </div>
+      <div class="flex justify-center mt-4">
+        <button
+          type="button"
+          id="backButton"
+          class="text-sm/6 font-semibold rounded-md bg-blue-600 px-3 py-2 text-white shadow-sm hover:bg-blue-500 "
+          onclick="window.location.href='main_status.html'"
+        >
+          หน้าหลัก
+        </button>
+      </div>
+    </div>
+    <script>
+      // const title = document.getElementById("title-name").textContent.trim();
+      // const firstName = document
+      //   .getElementById("first-name")
+      //   .textContent.trim();
+      // const lastName = document.getElementById("last-name").textContent.trim();
+      // const fullName = `${title} ${firstName} ${lastName}`;
+      // document.getElementById("result_name").textContent = fullName;
+    </script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: auto; 
+        padding: 0;
+      }
+
+      iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+      }
+      .border-container {
+        max-width: 800px;
+        margin: 20px auto; /* เพิ่มค่า margin-top ที่นี่ */
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      @media (min-width: 768px) {
+        .border-container {
+          width: 90%;
+          padding: 15px;
+        }
+      }
+      .iframe-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </body>
+</html>

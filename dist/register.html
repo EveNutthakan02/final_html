@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>REGISTER</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0; /* กำจัด padding ของ body //padding: 20px;*/
+      }
+      iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+      }
+
+      .iframe-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      /*Date*/
+      .calendar-container {
+        width: 90%;
+        max-width: 300px;
+        margin: 20px auto;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .calendar-grid div {
+        padding: 10px;
+        font-size: 14px;
+      }
+      .calendar-grid .date {
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.2s ease;
+      }
+      .calendar-grid .date:hover {
+        background-color: #f3f4f6;
+      }
+      .calendar-grid .selected {
+        background-color: #6366f1;
+        color: white;
+      }
+
+      .form-container {
+        max-width: 800px;
+        margin: 20px auto; /* เพิ่มค่า margin-top ที่นี่ */
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      fieldset {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+
+      legend {
+        font-weight: bold;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      .form-grid-heir {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .input-group-select {
+        display: flex;
+        flex-direction: row;
+      }
+      .describe {
+        margin-top: 10px;
+      }
+
+      label {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      input,
+      select {
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .form-container {
+          width: 90%;
+          padding: 15px;
+        }
+
+        .form-grid {
+          display: flex;
+          flex-direction: column;
+        }
+        .form-grid-heir {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .input-group-select {
+          display: flex;
+          flex-direction: row;
+        }
+        .form-grid .input-group {
+          width: 100%;
+        }
+        .describe {
+          margin-top: 10px;
+        }
+      }
+    </style>
+  <meta charset="utf-8"><script defer src="main.js"></script></head>
+
+  <body>
+    <div class="iframe-wrapper">
+      <iframe src="banner.html"></iframe>
+    </div>
+
+    <div class="form-container">
+      <h1 class="text-3xl font-bold text-center">ยื่นคำขอรับสิทธิ</h1>
+
+      <!-- Form -->
+      <div class="mt-10">
+        <fieldset>
+          <legend>ประเภทการขอรับสิทธิ</legend>
+          <div class="form-grid">
+            <div class="input-group-select">
+              <input
+                id="push-new"
+                name="push-notifications"
+                type="radio"
+                class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400"
+              />
+              <label
+                for="push-new"
+                class="block text-sm/6 font-medium text-gray-900 ml-4"
+                >ยื่นเรื่องใหม่</label
+              >
+            </div>
+            <div class="input-group-select">
+              <input
+                id="push-broken"
+                name="push-notifications"
+                type="radio"
+                class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400"
+              />
+              <label
+                for="push-broken"
+                class="block text-sm/6 font-medium text-gray-900 ml-4"
+                >บัตรชำรุด</label
+              >
+            </div>
+            <div class="input-group-select">
+              <input
+                id="push-lost"
+                name="push-notifications"
+                type="radio"
+                class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400"
+              />
+              <label
+                for="push-lost"
+                class="block text-sm/6 font-medium text-gray-900 ml-4"
+                >บัตรสูญหาย</label
+              >
+            </div>
+          </div>
+        </fieldset>
+        <!-- </div> -->
+        <fieldset>
+          <legend>ข้อมูลส่วนตัวผู้มีสิทธิ</legend>
+          <div class="form-grid">
+            <div class="input-group">
+              <label
+                for="id-card"
+                class="block text-sm/6 font-medium text-gray-900"
+                >เลขประจำตัวประชาชน</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="id-card"
+                  id="id-card"
+                  autocomplete="id-card"
+                  class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label
+                for="title-name"
+                class="block text-sm/6 font-medium text-gray-900"
+                >คำนำหน้าชื่อ</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="title-name"
+                  id="title-name"
+                  autocomplete="title-name"
+                  class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label
+                for="first-name"
+                class="block text-sm/6 font-medium text-gray-900"
+                >ชื่อ</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  autocomplete="given-name"
+                  class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label
+                for="last-name"
+                class="block text-sm/6 font-medium text-gray-900"
+                >สกุล</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="last-name"
+                  id="last-name"
+                  autocomplete="family-name"
+                  class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Dropdown -->
+        <fieldset>
+          <legend>เหตุการณ์ราชสงคราม</legend>
+          <div class="input-group">
+            <label for="war-select">เลือกเหตุการณ์</label>
+            <select
+              id="war-select"
+              name="war-select"
+              class="block w-40 rounded-md border-0 bg-white px-3 py-2 text-gray-900 shadow-sm outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+              onchange="updateDropdownStyle(this)"
+            >
+              <option value="" disabled selected class="text-gray-300">
+                --เลือก--
+              </option>
+              <option value="ww1" class="text-gray-900">
+                สงครามโลกครั้งที่ 1
+              </option>
+              <option value="indochina-war" class="text-gray-900">
+                สงครามอินโดจีน
+              </option>
+              <option value="ww2" class="text-gray-900">
+                สงครามโลกครั้งที่ 2
+              </option>
+              <option value="korean-war" class="text-gray-900">
+                สงครามเกาหลี
+              </option>
+              <option value="vietnam-war" class="text-gray-900">
+                สงครามเวียดนาม
+              </option>
+            </select>
+          </div>
+        </fieldset>
+        <!--ราชกิจจาฯ-->
+        <fieldset>
+          <legend>ราชกิจจาฯ</legend>
+          <div class="form-grid">
+            <div class="input-group">
+              <label
+                for="book"
+                class="block text-sm/6 font-medium text-gray-900"
+                >เล่ม, ลงวันที่</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="book"
+                  id="book"
+                  autocomplete="book"
+                  class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label
+                for="pages"
+                class="block text-sm/6 font-medium text-gray-900"
+                >ตอน, หน้า, บรรทัด</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="pages"
+                  id="pages"
+                  autocomplete="pages"
+                  class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="describe text-gray-400">
+            <h6>
+              *กรุณาใส่ตัวเลือกที่ต้องการ โดยใช้เครื่องหมายคอมม่า
+              (,)เพื่อแบ่งระหว่างแต่ละตัวเลือก เช่น ถ้าต้องการใส่ตัวเลือก
+              'ตอนที่181 หน้า114 บรรทัดที่2' กรุณาพิมพ์ดังนี้ 181, 114, 2
+            </h6>
+          </div>
+        </fieldset>
+        <!-- /// -->
+        <!--ผู้ขอรับสิทธิ-->
+        <fieldset>
+          <legend>ผู้ขอรับสิทธิ</legend>
+          <!--select ผู้รับสิทธิ-->
+          <div class="form-grid-heir">
+            <div class="input-group-select">
+              <input
+                id="push-myself"
+                name="push-option"
+                type="radio"
+                class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400"
+              />
+              <label
+                for="push-myself"
+                class="block text-sm/6 font-medium text-gray-900 ml-4"
+                >รับสิทธิเอง</label
+              >
+            </div>
+            <div class="input-group-select">
+              <input
+                id="push-heir"
+                name="push-option"
+                type="radio"
+                class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400"
+              />
+              <label
+                for="push-heir"
+                class="block text-sm/6 font-medium text-gray-900 ml-4"
+                >ทายาทรับสิทธิแทน</label
+              >
+            </div>
+            <!--ทายาทรับสิทธิแทน-->
+            <div class="form-grid">
+              <div class="input-group">
+                <label
+                  for="idHeir"
+                  class="block text-sm/6 font-medium text-gray-200"
+                  >เลขประจำตัวประชาชนทายาท</label
+                >
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    name="idHeir"
+                    id="idHeir"
+                    autocomplete="idHeir"
+                    disabled
+                    class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-200 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label
+                  for="titleHeir"
+                  class="block text-sm/6 font-medium text-gray-200"
+                  >คำนำหน้าชื่อ</label
+                >
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    name="titleHeir"
+                    id="titleHeir"
+                    autocomplete="titleHeir"
+                    disabled
+                    class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-200 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label
+                  for="firstHeir"
+                  class="block text-sm/6 font-medium text-gray-200"
+                  >ชื่อ</label
+                >
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    name="firstHeir"
+                    id="firstHeir"
+                    autocomplete="firstHeir"
+                    disabled
+                    class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-200 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label
+                  for="lastHeir"
+                  class="block text-sm/6 font-medium text-gray-200"
+                  >สกุล</label
+                >
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    name="lastHeir"
+                    id="lastHeir"
+                    autocomplete="lastHeir"
+                    disabled
+                    class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-200 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!--ที่หนังสือหน่วย-->
+        <fieldset>
+          <legend>ที่หนังสือหน่วย</legend>
+          <div class="form-grid">
+            <div class="input-group">
+              <label
+                for="affiliationName"
+                class="block text-sm/6 font-medium text-gray-900"
+                >สังกัด</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="affiliationName"
+                  id="affiliationName"
+                  autocomplete="affiliationName"
+                  class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label
+                for="bookNum"
+                class="block text-sm/6 font-medium text-gray-900"
+                >ที่หนังสือ</label
+              >
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="bookNum"
+                  id="bookNum"
+                  autocomplete="bookNum"
+                  class="block w-40 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label
+                for="bookDate"
+                class="block text-sm font-medium text-gray-900"
+              >
+                วันที่ออกหนังสือ
+              </label>
+              <div class="mt-2">
+                <input
+                  type="date"
+                  id="bookDate"
+                  name="bookDate"
+                  class="block w-40 rounded-md bg-white px-3 py-2 text-gray-900 shadow-sm outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!--วันที่-->
+        <fieldset>
+          <legend>วันที่ขอรับสิทธิ</legend>
+          <!--วันที่ขอรับสิทธิ-->
+          <div class="form-grid">
+            <div class="input-group">
+              <label
+                for="dateVerify"
+                class="block text-sm font-medium text-gray-900"
+              >
+                วันที่
+              </label>
+              <div class="mt-2">
+                <input
+                  type="date"
+                  id="dateVerify"
+                  name="dateVerify"
+                  class="block w-40 rounded-md bg-white px-3 py-2 text-gray-900 shadow-sm outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Buttons -->
+        <div class="mt-6 flex items-center justify-center gap-x-6">
+          <button
+            type="button"
+            id="submitButton"
+            class="text-sm/6 font-semibold rounded-md bg-indigo-600 px-3 py-2 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-indigo-600"
+            onclick="handleSubmit(event)"
+          >
+            บันทึก
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        // ตรวจสอบ radio
+        const typeSelected = document.querySelector(
+          'input[name="push-notifications"]:checked'
+        );
+        const optionSelected = document.querySelector(
+          'input[name="push-option"]:checked'
+        );
+
+        // ตรวจสอบ input fields
+        const requiredFields = [
+          "id-card",
+          "title-name",
+          "first-name",
+          "last-name",
+          "war-select",
+          "book",
+          "pages",
+          "affiliationName",
+          "bookNum",
+          "bookDate",
+          "dateVerify",
+        ];
+
+        let isValid = true;
+
+        // ตรวจสอบว่าฟิลด์ทั้งหมดถูกกรอกครบหรือไม่
+        for (const id of requiredFields) {
+          const el = document.getElementById(id);
+          if (!el || !el.value.trim()) {
+            isValid = false;
+            break;
+          }
+        }
+
+        // ตรวจสอบว่า id-card ถูกกรอกแล้ว
+        const idCard = document.getElementById("id-card").value.trim();
+        if (idCard === "1234567890123") {
+          const confirmMessage =
+            "เคยลงทะเบียนไปแล้ว ต้องการลงทะเบียนซ้ำหรือไม่?";
+          if (!confirm(confirmMessage)) {
+            window.location.href = "#";
+            return; // หยุดการทำงานหลังจากเปลี่ยนหน้า
+          } else {
+            // ตรวจสอบว่า radio ถูกเลือกครบหรือไม่
+            if (!typeSelected || !optionSelected || !isValid) {
+              showAlert("กรุณากรอกข้อมูลให้ครบถ้วน");
+              return;
+            }
+            // ถ้าข้อมูลครบถ้วน
+            showAlert("บันทึกการลงทะเบียนสำเร็จ", true);
+          }
+        }
+        // ตรวจสอบว่า radio ถูกเลือกครบหรือไม่
+        if (!typeSelected || !optionSelected || !isValid) {
+          showAlert("กรุณากรอกข้อมูลให้ครบถ้วน");
+          return;
+        }
+        // ถ้าข้อมูลครบถ้วน
+        showAlert("บันทึกการลงทะเบียนสำเร็จ", true);
+      }
+
+      function showAlert(message, shouldRedirect = false) {
+        const popup = document.createElement("div");
+        popup.innerText = message;
+        popup.style.position = "fixed";
+        popup.style.top = "50%";
+        popup.style.left = "50%";
+        popup.style.transform = "translate(-50%, -50%)";
+        popup.style.padding = "1.5rem 2rem";
+        popup.style.color = "white";
+        popup.style.fontSize = "1rem";
+        popup.style.borderRadius = "12px";
+        popup.style.boxShadow = "0 2px 20px rgba(0,0,0,0.3)";
+        popup.style.zIndex = "9999";
+
+        // เปลี่ยนสีพื้นหลังตามข้อความ
+        if (message.includes("สำเร็จ")) {
+          popup.style.background = "#22c55e"; // เขียว
+        } else {
+          popup.style.background = "#ef4444"; // แดง
+        }
+
+        document.body.appendChild(popup);
+
+        setTimeout(() => {
+          popup.remove();
+          if (shouldRedirect) {
+            window.location.href = "result.html";
+          }
+        }, 2000); // ค้างไว้ 2 วินาทีแล้วค่อยทำ action ต่อไป
+      }
+
+      // async function handleSubmit(event) {
+      //   console.log("Button clicked");
+      //   event.preventDefault(); // ป้องกันการส่งฟอร์มทันที
+
+      //   const idCard = document.getElementById("idCard").value;
+      //   if (!idCard) {
+      //     alert("กรุณากรอกหมายเลขบัตรประชาชน");
+      //     return;
+      //   }
+
+      //   try {
+      //     const response = await fetch(`/search?id=${idCard}`);
+      //     const result = await response.json();
+
+      //     let isUpdate = false;
+
+      //     if (result.found) {
+      //       const confirmDuplicate = confirm(
+      //         "คุณได้มีการลงทะเบียนกับระบบแล้ว ต้องการทำซ้ำหรือไม่?"
+      //       );
+      //       if (!confirmDuplicate) return;
+      //       isUpdate = true; // กำหนดว่าเป็นการอัปเดตข้อมูล
+      //     }
+
+      // const mockDatabase = {
+      //   idCard: idCard,
+      //   titleName: document.getElementById("titleName").value,
+      //   firstName: document.getElementById("firstName").value,
+      //   lastName: document.getElementById("lastName").value,
+      //   warEvent: document.getElementById("warEvent").value,
+      //   book: document.getElementById("book").value,
+      //   pages: document.getElementById("pages").value,
+      //   pushOption: document.getElementById("pushOption").value,
+      //   idHeir: document.getElementById("idHeir").value,
+      //   titleHeir: document.getElementById("titleHeir").value,
+      //   firstHeir: document.getElementById("firstHeir").value,
+      //   lastHeir: document.getElementById("lastHeir").value,
+      //   affiliationName: document.getElementById("affiliationName").value,
+      //   bookNum: document.getElementById("bookNum").value,
+      //   bookDate: document.getElementById("bookDate").value,
+      //   dateVerify: document.getElementById("dateVerify").value,
+      //   step: "new",
+      // };
+
+      // ใช้ API อัปเดตถ้าข้อมูลมีอยู่แล้ว
+      //     const apiURL = isUpdate ? "/update" : "/submit";
+      //     const method = isUpdate ? "PUT" : "POST";
+      //     const saveResponse = await fetch("/submit", {
+      //       method: "POST",
+      //       headers: { "Content-Type": "application/json" },
+      //       body: JSON.stringify(mockDatabase),
+      //     });
+
+      //     if (saveResponse.ok) {
+      //       alert("บันทึกข้อมูลสำเร็จ!");
+      //       location.reload();
+      //     } else {
+      //       alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+      //     }
+      //   } catch (error) {
+      //     console.error("Error:", error);
+      //     alert("เกิดข้อผิดพลาดในการเชื่อมต่อเซิร์ฟเวอร์");
+      //   }
+      // }
+
+      function updateDropdownStyle(selectElement) {
+        if (selectElement.value === "") {
+          selectElement.style.color = "#d1d5db"; //gray-300
+        } else {
+          selectElement.style.color = "#000";
+          selectElement.style.outline = "1px solid #d1d5db"; //outline-gray-300
+        }
+      }
+
+      function heirInput() {
+        const pushMyself = document.getElementById("push-myself"); // ตัวเลือก "รับสิทธิเอง"
+        const pushHeir = document.getElementById("push-heir"); // ตัวเลือก "ทายาทรับสิทธิแทน"
+
+        const idHeir = document.getElementById("idHeir"); // ฟอร์ม ทายาท
+        const titleHeir = document.getElementById("titleHeir");
+        const firstHeir = document.getElementById("firstHeir");
+        const lastHeir = document.getElementById("lastHeir");
+
+        const idHeirLabel = document.querySelector("label[for='idHeir']"); // Label ของช่องกรอกข้อมูล
+        const titleHeirLabel = document.querySelector("label[for='titleHeir']");
+        const firstHeirLabel = document.querySelector("label[for='firstHeir']");
+        const lastHeirLabel = document.querySelector("label[for='lastHeir']");
+
+        if (pushMyself.checked) {
+          idHeir.disabled = true; // ปิดการใช้งานฟอร์ม
+          titleHeir.disabled = true;
+          firstHeir.disabled = true;
+          lastHeir.disabled = true;
+
+          idHeir.value = ""; // ล้างค่าที่กรอกในฟอร์ม
+          titleHeir.value = "";
+          firstHeir.value = "";
+          lastHeir.value = "";
+
+          idHeir.style.outline = ""; // ลบ outline
+          titleHeir.style.outline = "";
+          firstHeir.style.outline = "";
+          lastHeir.style.outline = "";
+
+          idHeirLabel.style.color = ""; // รีเซ็ตสีข้อความ Label กลับเป็นค่าเริ่มต้น
+          titleHeirLabel.style.color = "";
+          firstHeirLabel.style.color = "";
+          lastHeirLabel.style.color = "";
+        } else if (pushHeir.checked) {
+          idHeir.disabled = false; // เปิดการใช้งานฟอร์ม
+          titleHeir.disabled = false;
+          firstHeir.disabled = false;
+          lastHeir.disabled = false;
+
+          idHeir.style.outline = "1px solid #d1d5db"; // เพิ่ม outline สี gray-300
+          titleHeir.style.outline = "1px solid #d1d5db";
+          firstHeir.style.outline = "1px solid #d1d5db";
+          lastHeir.style.outline = "1px solid #d1d5db";
+
+          idHeirLabel.style.color = "#111827"; // เปลี่ยนสีข้อความ Label เป็นสีเทา (gray-900)
+          titleHeirLabel.style.color = "#111827";
+          firstHeirLabel.style.color = "#111827";
+          lastHeirLabel.style.color = "#111827";
+        }
+      }
+      // ตั้งค่าการทำงานเริ่มต้นเมื่อโหลดหน้าเว็บ selectผู้รับสิทธิ
+      window.addEventListener("DOMContentLoaded", heirInput);
+      // เพิ่ม Event Listener ให้กับปุ่มทั้งสอง
+      document
+        .getElementById("push-myself")
+        .addEventListener("change", heirInput);
+      document
+        .getElementById("push-heir")
+        .addEventListener("change", heirInput);
+
+      // ตั้งค่าเริ่มต้นให้ option สีเทา "เลือก"สงคราม
+      window.addEventListener("DOMContentLoaded", function () {
+        const selectElement = document.getElementById("war-select");
+        updateDropdownStyle(selectElement); // เรียกใช้เมื่อตอนโหลดหน้าเว็บ
+      });
+
+      // //Date
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const today = new Date().toISOString().split("T")[0]; // แปลงวันที่ปัจจุบันให้อยู่ในรูปแบบ
+      //   document.getElementById("bookDate").value = today; // ตั้งค่าลงใน input วันที่ลงหนังสือหน่วย
+      //   document.getElementById("dateVerify").value = today; // ตั้งค่าลงใน inputวันที่ขอรับสิทธิ
+      // });
+    </script>
+  </body>
+</html>
